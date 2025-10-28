@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automata for Lexical Analysis & Plagiarism Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Automata (Finite) for Lexical Analysis & Plagiarism Detection</h1>
+
+    <form method="POST">
+        <label for="text_input">Enter or paste text below:</label>
+        <textarea name="text_input" id="text_input" rows="10" placeholder="Type or paste text here..."></textarea>
+
+        <div class="options">
+            <label><input type="radio" name="operation" value="lexical"
+                          {% if selected_option == 'lexical' %}checked{% endif %}> Lexical Analysis</label>
+            <label><input type="radio" name="operation" value="plagiarism"
+                          {% if selected_option == 'plagiarism' %}checked{% endif %}> Plagiarism Detection</label>
+        </div>
+
+        <button type="submit">Run Analysis</button>
+    </form>
+
+    {% if result %}
+    <div class="result">
+        <h3>Result:</h3>
+        <pre>{{ result }}</pre>
+    </div>
+    {% endif %}
+</div>
+</body>
+</html>
