@@ -7,10 +7,9 @@ from modules.plagiarism_checker import PlagiarismChecker
 app = Flask(__name__)
 
 # -------------------------------
-# 🔑 Google API Key and Search Engine ID
 # -------------------------------
-GOOGLE_API_KEY = "AIzaSyABwknD5VTYIAxdckzcGI8ZyUB4dOvGerU"      # Replace with your key
-GOOGLE_CSE_ID = "60dbf464aba9e404a"        # Replace with your search engine ID
+GOOGLE_API_KEY = "AIzaSyABwknD5VTYIAxdckzcGI8ZyUB4dOvGerU"     
+GOOGLE_CSE_ID = "60dbf464aba9e404a"        
 
 # -------------------------------
 # Initialize plagiarism checker with Google API
@@ -37,7 +36,7 @@ def home():
 @app.route('/api/plagiarism_web', methods=['POST'])
 def plagiarism_web_api():
     data = request.get_json()
-    log_json("Received JSON input", data)  # Log the incoming request
+    log_json("Received JSON input", data)  # Logging
 
     text_input = data.get('text_input', '').strip() if data else ''
     if not text_input:
@@ -54,7 +53,6 @@ def plagiarism_web_api():
         return jsonify({"status": "error", "message": str(e)}), 500
 
 # -------------------------------
-# Run app
 # -------------------------------
 if __name__ == '__main__':
     app.run(debug=True)
